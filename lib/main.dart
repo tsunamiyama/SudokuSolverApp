@@ -18,8 +18,8 @@ class BoardPage extends StatefulWidget {
 }
 
 class _BoardPageState extends State<BoardPage> {
-  List<Widget> _getNumButtons() {
-    List<Widget> tempList = List.generate(9, (index) {
+  List<Widget> _getNumButtons1() {
+    List<Widget> tempList = List.generate(5, (index) {
       return Expanded(
           child: OutlineButton(
         child: Text(
@@ -35,6 +35,30 @@ class _BoardPageState extends State<BoardPage> {
           }
           Provider.of<SudokuBoardNotifier>(context, listen: false)
               .changeValue(index + 1);
+        },
+        highlightedBorderColor: Colors.transparent,
+      ));
+    });
+    return tempList;
+  }
+
+  List<Widget> _getNumButtons2() {
+    List<Widget> tempList = List.generate(4, (index) {
+      return Expanded(
+          child: OutlineButton(
+        child: Text(
+          "${index + 6}",
+          style: TextStyle(color: Colors.black),
+        ),
+        onPressed: () {
+          if (Provider.of<SudokuBoardNotifier>(context, listen: false)
+                  .selectedCell
+                  .getRow() ==
+              -1) {
+            return false;
+          }
+          Provider.of<SudokuBoardNotifier>(context, listen: false)
+              .changeValue(index + 6);
         },
         highlightedBorderColor: Colors.transparent,
       ));
@@ -77,7 +101,16 @@ class _BoardPageState extends State<BoardPage> {
                   padding: EdgeInsets.only(left: 10, right: 10),
                   child: Flex(
                     direction: Axis.horizontal,
-                    children: _getNumButtons(),
+                    children: _getNumButtons1(),
+                  ),
+                ),
+              ),
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 10, right: 10),
+                  child: Flex(
+                    direction: Axis.horizontal,
+                    children: _getNumButtons2(),
                   ),
                 ),
               ),
