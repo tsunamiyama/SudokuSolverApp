@@ -5,3 +5,4 @@ SudokuSolver is an app built for android and ios which solves sudoku puzzles usi
 ## Specs
 This was the first project I have ever done using the Dart language with Flutter to create an android application. I had heard good things about flutter in the past as an alternative to Android Studio which I had used for my food app. Below demonstrates how it works.
 
+![](https://github.com/tsunamiyama/SudokuSolverApp/blob/master/2021-05-05%2015-26-11.gif)
